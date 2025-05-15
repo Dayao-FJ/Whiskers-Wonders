@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Mobile Game Menu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .game-container {
+      width: 100vw;
+      height: 100vh;
+      max-width: calc(100vh * 2/3);
+      max-height: calc(100vw * 3/2);
+      position: relative;
+      background-image: url('../../Assets/three.png');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .button-container {
+      position: absolute;
+      bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .game-button {
+      width: 100%;
+      padding: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .game-button img {
+      width: 45%;
+      height: auto;
+      margin-top: 50%;
+      margin-left: 25%;
+    }
+
+    .game-button:active {
+      transform: scale(0.95);
+    }
+
+    @media screen and (min-aspect-ratio: 2/3) {
+      .game-container {
+        margin: auto;
+        border: 1px solid rgba(0,0,0,0.1);
+      }
+    }
+
+    @media (orientation: landscape) {
+      body::before {
+        content: "Please rotate your device to portrait mode";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <a href="" onclick="closeIframeAndNavigate('../../index.html'); return false;" class="game-button">
+      <img src="../../Assets/Buttons/backtomenuBtn.png" alt="Back to Menu">
+    </a>
+  </div>
+
+  <script>
+    function closeIframeAndNavigate(targetUrl) {
+      try {
+        // If we're in an iframe, tell the parent window to hide it
+        if (window.parent && window !== window.parent) {
+          // Hide the iframe container in the parent window
+          window.parent.document.getElementById('iframeContainer').style.display = 'none';
+          
+          // Navigate the parent window to the target URL
+          window.parent.location.href = targetUrl;
+        } else {
+          // If not in an iframe, just navigate directly
+          window.location.href = targetUrl;
+        }
+      } catch (e) {
+        console.error("Error during navigation:", e);
+        // Fallback navigation
+        window.top.location.href = targetUrl;
+      }
+    }
+
+    function navigateToNewPage() {
+      try {
+        if (window.parent && window.parent.hideIframe) {
+          window.parent.hideIframe(); // Hide the iframe
+        }
+      } catch (e) {
+        console.error("Error hiding iframe:", e);
+      }
+
+      setTimeout(function () {
+        window.top.location.href = "../../index.html";
+      }, 50);
+    }
+  </script>
+</body>
+</html>

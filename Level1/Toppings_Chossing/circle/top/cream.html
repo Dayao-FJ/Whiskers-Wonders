@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mobile Game Menu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-container {
+            width: 100vw;
+            height: 100vh;
+            max-width: calc(100vh * 2/3);
+            max-height: calc(100vw * 3/2);
+            position: relative;
+            background-image: url('../../../../Assets/picking_background3.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .cake-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            max-width: 300px;
+            position: relative;
+            height: 200px;
+        }
+
+        .cake-preview {
+            position: absolute;
+            width: 200px;
+            height: auto;
+            transform: translate(-100px, 40px);
+            z-index: 1;
+            left: 52%;
+            top: 20%;
+        }
+
+        .cake-options {
+            display: flex;
+            justify-content: center;
+            margin-top: 55px;
+            margin-left: auto;
+        }
+
+        .cake-button {
+            width: 69px;
+            height: 69px;
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .cake-button img {
+            width: 70%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cake-button:active {
+            transform: scale(0.95);
+        }
+
+        .next-button {
+            width: 160px;
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-left: 60px;
+        }
+
+        .next-button img {
+            width: 70%;
+            height: auto;
+        }
+
+        .next-button:active {
+            transform: scale(0.95);
+        }
+
+        @media screen and (min-aspect-ratio: 2/3) {
+            .game-container {
+                margin: auto;
+                border: 1px solid rgba(0,0,0,0.1);
+            }
+        }
+
+        @media (orientation: landscape) {
+            body::before {
+                content: "Please rotate your device to portrait mode";
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.8);
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="cake-container">
+            <img src="../../../../Assets/cakes_folder/cakes/toppings/cream.PNG" style="width: 80px; margin-top: 70px; z-index: 2;">
+            <img src="../../../../Assets/cakes_folder/cakes/icing/top_circle.PNG" alt="" class="cake-preview">
+        </div>        
+        <div class="cake-options">
+            <a href="blueberry.html" class="cake-button">
+                <img src="../../../../Assets/cakes_folder/cakes/toppings/blueberry.PNG" alt="Cake 1">
+            </a>
+            <a href="cream.html" class="cake-button">
+                <img src="../../../../Assets/cakes_folder/cakes/toppings/cream.PNG" alt="Cake 2">
+            </a>
+            <a href="heart.html" class="cake-button">
+                <img src="../../../../Assets/cakes_folder/cakes/toppings/heart.PNG" alt="Cake 3">
+            </a>
+            <a href="strawberry.html" class="cake-button">
+                <img src="../../../../Assets/cakes_folder/cakes/toppings/strawberry.PNG" alt="Cake 3">
+            </a>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 40px;">
+            <a href="../../../Icing_Choosing/Circle/no_choosen.html" class="next-button" style="margin-right: 150px;">
+                <img src="../../../../../../Assets/Buttons/back.png" alt="">
+            </a>
+            <a href="../../../stars_obtained/twostar.html" class="next-button" style="margin-left: -200px;">
+                <img src="../../../../Assets/Buttons/finishBtn.png" alt="Next Button">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
